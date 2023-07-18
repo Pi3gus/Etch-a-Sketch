@@ -1,12 +1,15 @@
 const container = document.getElementById("container");
 
-function makeRows(rows, cols) {
-    container.style.setProperty('--grid-rows', rows);
-    container.style.setProperty('--grid-cols', cols);
-  for (c = 0; c < (rows * cols); c++) {
-    let cell = document.createElement("div");
-    container.appendChild(cell).className = "grid-item";
-    };
+function createGrid(gridNumber){
+  let gridArea = gridNumber * gridNumber;
+  for(i = 1; i <= gridArea; i++){
+    let cell = document.createElement('div');
+    container.style.gridTemplateColumns = `repeat(${gridNumber}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${gridNumber}, 1fr)`;
+    container.insertAdjacentElement('beforeend', cell);
+  };
+  const gridCell = container.querySelectorAll('div');
+  gridCell.forEach(gridCell => {gridCell.addEventListener('click', )});
 };
 
-makeRows(16, 16);
+createGrid(16);
